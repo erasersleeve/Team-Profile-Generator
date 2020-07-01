@@ -10,9 +10,100 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const employees = [];
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+const initQuery = [
+    {
+        type:"input",
+        message:"What is your manager's name?",
+        name:"name"
+    },
+    {
+        type:"input",
+        message:"What is your manager's ID?",
+        name:"id"
+    },
+    {
+        type:"input",
+        message:"What is your manager's email?",
+        name:"email"
+    },
+    {
+        type:"input",
+        message:"What is your manager's office number?",
+        name:"officeNumber"
+    }
+];
+const typeQuery = [
+    {
+        type:"list",
+        message:"What type of team member would you like to add?",
+        choices: ["Engineer", "Intern", "There are no more team members to add"],
+        name:"member"
+    }
+];
+const engQuery = [
+    {
+        type:"input",
+        message:"What is this engineer's name?",
+        name:"name"
+    },
+    {
+        type:"input",
+        message:"What is this engineer's ID?",
+        name:"id"
+    },
+    {
+        type:"input",
+        message:"What is this engineer's email?",
+        name:"email"
+    },
+    {
+        type:"input",
+        message:"What is this engineer's github username?",
+        name:"officeNumber"
+    }
+];
+
+const intQuery = [
+    {
+        type:"input",
+        message:"What is this intern's name?",
+        name:"name"
+    },
+    {
+        type:"input",
+        message:"What is this intern's ID?",
+        name:"id"
+    },
+    {
+        type:"input",
+        message:"What is this intern's email?",
+        name:"email"
+    },
+    {
+        type:"input",
+        message:"Where does this intern study?",
+        name:"officeNumber"
+    }
+];
+
+
+function init() {
+    inquirer.prompt(initQuery).then(function () {
+        let newManager = new Manager (initQuery.name, initQuery.id, initQuery.email, initQuery.officeNumber);
+        employees.push(newManager);
+        let moreEmployees = true;
+        if (moreEmployees) {
+        inquirer.prompt(typeQuery)
+
+        }   
+    })
+}
+init();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
