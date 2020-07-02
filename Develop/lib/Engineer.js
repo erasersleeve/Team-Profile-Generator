@@ -1,39 +1,32 @@
-// class Engineer {
-//     constructor(name, id, email, GitHubUser){
-//         this.name = name;
-//         this.id = id;
-//         this.email = email;
-//         this.github = GitHubUser;
-//         this.role = "Engineer";
-//     }
-// }
+const Employee =  require("./Employee");
 
-function Engineer (name, id, email, GitHubUser){
-    this.name = name;
-    this.id = id;
-    this.email = email;
-    this.github = GitHubUser;
+class Engineer extends Employee{
+    constructor (name, id, email, gitHubUser){
+    super(name, email, id);
+    this.github = gitHubUser;
     this.role = "Engineer";
-}
+    }
+    getName(){
+        return this.name;
+    }
+    
+    getId(){
+        return this.id;
+    }
+    
+    getEmail(){
+        return this.email;
+    }
+    
+    getGithub(){
+        return this.github;
+    }
+    
+    getRole(){
+        return this.role;
+    }
+    
 
-Engineer.prototype.getName = function(){
-    return this.name;
-}
-
-Engineer.prototype.getId = function(){
-    return this.id;
-}
-
-Engineer.prototype.getEmail = function(){
-    return this.email;
-}
-
-Engineer.prototype.getGitHub = function(){
-    return this.github;
-}
-
-Engineer.prototype.getRole = function(){
-    return this.role;
 }
 
 module.exports = Engineer;

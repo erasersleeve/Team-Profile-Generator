@@ -7,8 +7,11 @@ const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
+console.log(outputPath);
+console.log(OUTPUT_DIR);
 const render = require("./lib/htmlRenderer");
+const { type } = require("os");
+const { dirname } = require("path");
 
 const employees = [];
 
@@ -64,7 +67,7 @@ const engQuery = [
     {
         type:"input",
         message:"What is this engineer's github username?",
-        name:"officeNumber"
+        name:"github"
     }
 ];
 
@@ -87,22 +90,55 @@ const intQuery = [
     {
         type:"input",
         message:"Where does this intern study?",
-        name:"officeNumber"
+        name:"school"
     }
 ];
 
 
 function init() {
-    inquirer.prompt(initQuery).then(function () {
-        let newManager = new Manager (initQuery.name, initQuery.id, initQuery.email, initQuery.officeNumber);
+    inquirer.prompt(initQuery).then(function (manager) {
+        let newManager = new Manager (manager.name, manager.id, manager.email, manager.officeNumber);
+        console.log(newManager);
         employees.push(newManager);
-        let moreEmployees = true;
-        if (moreEmployees) {
-        inquirer.prompt(typeQuery)
-
-        }   
+        addEmployees();
+    })    
+}
+function addEmployees() {
+    inquirer.prompt(typeQuery).then(function(type) {
+        let etype = type.member;
+        if (etype == "Engineer"){
+            // console.log("Engineer");
+            newEngineer();
+        }
+        if (etype == "Intern") {
+            // console.log("Intern");
+            newIntern();
+        }
+        if (etype !== "Engineer" && etype !== "Intern") {
+            console.log("Rendering");
+            console.log(employees); 
+            fs.writeFileSync(outputPath, render(employees), "utf8");
+        } 
     })
 }
+
+function newEngineer() {
+    inquirer.prompt(engQuery).then(function(engineer){
+        let newEngineer = new Engineer (engineer.name, engineer.id, engineer.email, engineer.github);
+        employees.push(newEngineer);
+        console.log(newEngineer);
+        addEmployees();
+    })
+}
+function newIntern() {
+    inquirer.prompt(intQuery).then(function(intern){
+        let newIntern = new Intern (intern.name, intern.id, intern.email, intern.school);
+        employees.push(newIntern);
+        console.log(newIntern);
+        addEmployees();
+    })
+}
+
 init();
 
 // After the user has input all employees desired, call the `render` function (required

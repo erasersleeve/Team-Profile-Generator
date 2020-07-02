@@ -1,39 +1,32 @@
-// class Intern {
-//     constructor(name, id, email, school){
-//         this.name = name;
-//         this.id = id;
-//         this.email = email;
-//         this.school = school;
-//         this.role = "Intern";
-//     }
-// }
+const Employee =  require("./Employee");
 
-function Intern (name, id, email, school) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
+class Intern extends Employee{
+    constructor (name, id, email, school) {
+    super (name, id, email);
     this.school = school;
     this.role = "Intern";
+    }
+    getName() {
+        return this.name;
+    }
+    
+    getId() {
+        return this.id;
+    }
+    
+    getEmail() {
+        return this.email;
+    }
+    
+    getSchool() {
+        return this.school;
+    }
+    
+    getRole() {
+        return this.role;
+    }
+    
 }
 
-Intern.prototype.getName = function(){
-    return this.name;
-}
-
-Intern.prototype.getId = function(){
-    return this.id;
-}
-
-Intern.prototype.getEmail = function(){
-    return this.email;
-}
-
-Intern.prototype.getSchool = function(){
-    return this.school;
-}
-
-Intern.prototype.getRole = function(){
-    return this.role;
-}
 
 module.exports = Intern;

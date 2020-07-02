@@ -1,39 +1,36 @@
-// class Manager {
-//     constructor(name, id, email, officeNumber){
-//         this.name = name;
-//         this.id = id;
-//         this.email = email;
-//         this.officeNumber = officeNumber;
-//         this.role = "Manager";
-//     }
-// }
+const Employee =  require("./Employee");
 
-function Manager (name, id, email, officeNumber) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
-        this.officeNumber = officeNumber;
-        this.role = "Manager";
+class Manager extends Employee{
+    constructor (name, id, email, officeNumber) {
+    super (name, id, email);
+    this.officeNumber = officeNumber;
+    this.role = "Manager";
     }
 
-Manager.prototype.getName = function(){
-    return this.name;
+    getName(){
+        return this.name;
+    }
+    
+    getId(){
+        return this.id;
+    }
+    
+    getEmail(){
+        return this.email;
+    }
+    
+    getOfficeNumber(){
+        return this.officeNumber;
+    }
+    
+    getRole(){
+        return this.role;
+    }
+    
+
+
+    
 }
 
-Manager.prototype.getId = function(){
-    return this.id;
-}
-
-Manager.prototype.getEmail = function(){
-    return this.email;
-}
-
-Manager.prototype.getOfficeNumber = function(){
-    return this.officeNumber;
-}
-
-Manager.prototype.getRole = function(){
-    return this.role;
-}
 
 module.exports = Manager;
