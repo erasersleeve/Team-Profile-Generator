@@ -17,6 +17,7 @@
 
   ## Usage
   From the command line run node app.js to launch the application. Once the application has run and the user has answered all prompts, the HTML page can be found in the output folder of the directory.
+  A video guide can be found at this link: (https://github.com/erasersleeve/Team-Profile-Generator/blob/master/assets/video_guide.webm)
   ## Images
   ![1](https://github.com/erasersleeve/Team-Profile-Generator/blob/master/Assets/Capture%20d%E2%80%99%C3%A9cran%20(44).png)
   ![2](https://github.com/erasersleeve/Team-Profile-Generator/blob/master/Assets/Capture%20d%E2%80%99%C3%A9cran%20(45).png)
